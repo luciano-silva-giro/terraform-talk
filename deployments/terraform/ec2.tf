@@ -4,7 +4,7 @@ module "ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "v5.7.1"
 
-  name                        = "exemplo"
+  name                        = "exemplo-2"
   instance_type               = "t3.micro"
   ami                        = "ami-005fc0f236362e99f" 
   monitoring                  = true
