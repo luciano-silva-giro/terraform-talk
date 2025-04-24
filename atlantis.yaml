@@ -1,0 +1,10 @@
+version: 3
+automerge: true
+projects:
+  - name: terraform-talk 
+    dir: deployments/terraform
+    apply_requirements: [mergeable, approved, undiverged]
+    autoplan:
+      enabled: false
+      when_modified:
+        - "*.tf"
