@@ -5,8 +5,8 @@
 - **Princípios chave**:
   - Infraestrutura versionável como código-fonte
   - Automatização do provisionamento
-  - Infraestrutura idempotente e consistente
-  - Documentação viva e auto-explicativa
+  - Infraestrutura consistente
+  - Documentação auto-explicativa
 - **Benefícios**:
   - Redução de erros humanos
   - Consistência entre ambientes
@@ -18,7 +18,7 @@
 - **Características principais**:
   - Linguagem declarativa (HCL - HashiCorp Configuration Language)
   - Independente de plataforma (multi-cloud)
-  - Open-source com grande comunidade
+  - Era open-source com grande comunidade
   - Ecossistema extenso de providers (AWS, Azure, GCP, e centenas de outros)
 - **Diferenciais competitivos**:
   - Plano de execução detalhado antes da aplicação (`terraform plan`)
