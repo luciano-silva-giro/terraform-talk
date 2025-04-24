@@ -1,10 +1,12 @@
+# Cria uma instância EC2 usando um módulo oficial do Terraform
+# Configura a instância com monitoramento, perfil IAM para SSM e um volume EBS
 module "ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "v5.7.1"
 
   name                        = "exemplo"
   instance_type               = "t3.micro"
-  ami                         = "ami-005fc0f236362e99f" 
+  ami                        = "ami-005fc0f236362e99f" 
   monitoring                  = true
   vpc_security_group_ids      = [aws_security_group.exemplo_sg.id]
   subnet_id                   = data.aws_subnet.public.id
@@ -25,6 +27,8 @@ module "ec2" {
   }
 }
 
+# Cria um grupo de segurança permitindo tráfego HTTP (porta 80) de entrada
+# e todo tráfego de saída
 resource "aws_security_group" "exemplo_sg" {
   name   = "exemplo"
   vpc_id = data.aws_vpc.this.id
@@ -48,6 +52,7 @@ resource "aws_security_group" "exemplo_sg" {
   }
 }
 
+# Cria um IP Elástico (EIP) na VPC
 resource "aws_eip" "this" {
   domain = "vpc"
   tags = {
@@ -56,6 +61,7 @@ resource "aws_eip" "this" {
   }
 }
 
+# Associa o IP Elástico criado à instância EC2
 resource "aws_eip_association" "this" {
   instance_id   = module.ec2.id
   allocation_id = aws_eip.this.id
